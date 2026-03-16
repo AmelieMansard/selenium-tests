@@ -28,12 +28,16 @@ public class GoogleTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#APjFqb"))).sendKeys("devenir riche sur twitch");
         // puis on clique sur le bouton "rechercher"
         wait.until(ExpectedConditions.elementToBeClickable(By.name("btnK"))).click();
+
         //on vérifie que le titre de la page est google
         //Assert.assertEquals(driver.getTitle(), "Google Search");
 
         //on verifie seulement si le terme google est présent. On créer une variable title pour stocker le titre de la page
 
+
         String title = driver.getTitle();
+        //assertNotNull : test fonctionnel pour savoir si il y a un titre
+        Assert.assertNotNull(title);
         System.out.println(title);
         Assert.assertTrue(title.contains("Google"));
 
