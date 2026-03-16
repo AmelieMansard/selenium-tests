@@ -1,4 +1,3 @@
-
 package com.test;
 
 import org.openqa.selenium.By;
@@ -24,6 +23,10 @@ public class GoogleTest {
         //on attends un max de dix secondes que les éléments chargent
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("L2AGLb"))).click();
+        // on écris "twitch" dans la barre de recherche
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#APjFqb"))).sendKeys("devenir riche sur twitch");
+        // puis on clique sur le bouton "rechercher"
+        wait.until(ExpectedConditions.elementToBeClickable(By.name("btnK"))).click();
 
     }
 }
