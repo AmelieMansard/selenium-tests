@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -18,7 +19,7 @@ public class GoogleTest {
         driver.get("https://www.google.fr");
 
         // On maximise la fenêtre
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         //on attends un max de dix secondes que les éléments chargent
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -27,6 +28,14 @@ public class GoogleTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#APjFqb"))).sendKeys("devenir riche sur twitch");
         // puis on clique sur le bouton "rechercher"
         wait.until(ExpectedConditions.elementToBeClickable(By.name("btnK"))).click();
+        //on vérifie que le titre de la page est google
+        //Assert.assertEquals(driver.getTitle(), "Google Search");
+
+        //on verifie seulement si le terme google est présent. On créer une variable title pour stocker le titre de la page
+
+        String title = driver.getTitle();
+        System.out.println(title);
+        Assert.assertTrue(title.contains("Google"));
 
     }
 }
